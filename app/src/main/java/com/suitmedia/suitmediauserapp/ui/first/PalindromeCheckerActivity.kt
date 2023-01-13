@@ -27,7 +27,8 @@ class PalindromeCheckerActivity : AppCompatActivity() {
         binding.apply {
 
             btnCheck.setOnClickListener {
-                val palindromeField = binding.etPalindrome.text.toString().filter { it.isWhitespace().not() }
+                val palindromeField =
+                    binding.etPalindrome.text.toString().filter { it.isWhitespace().not() }
                 if (validateInput(binding.etPalindrome)) {
                     isPalindrome(palindromeField)
                 }
@@ -35,9 +36,13 @@ class PalindromeCheckerActivity : AppCompatActivity() {
             btnNext.setOnClickListener {
                 val name = binding.etName.text.toString()
                 if (validateInput(binding.etName)) {
-                    startActivity(Intent(this@PalindromeCheckerActivity, SelectedUserActivity::class.java).apply {
-                        putExtra(SelectedUserActivity.EXTRA_NAME, name)
-                    })
+                    startActivity(
+                        Intent(
+                            this@PalindromeCheckerActivity,
+                            SelectedUserActivity::class.java
+                        ).apply {
+                            putExtra(SelectedUserActivity.EXTRA_NAME, name)
+                        })
                 }
             }
         }

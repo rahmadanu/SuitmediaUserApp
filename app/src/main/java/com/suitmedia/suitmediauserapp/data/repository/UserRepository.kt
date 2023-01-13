@@ -14,7 +14,8 @@ interface UserRepository {
     fun getUserLists(): LiveData<PagingData<User>>
 }
 
-class UserRepositoryImpl @Inject constructor(private val listUsersPagingSource: ListUsersPagingSource): UserRepository {
+class UserRepositoryImpl @Inject constructor(private val listUsersPagingSource: ListUsersPagingSource) :
+    UserRepository {
     override fun getUserLists(): LiveData<PagingData<User>> {
         return Pager(
             config = PagingConfig(

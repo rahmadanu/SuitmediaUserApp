@@ -7,11 +7,12 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.suitmedia.suitmediauserapp.R
 import com.suitmedia.suitmediauserapp.databinding.ItemFooterLoadStateBinding
 
 class FooterLoadStateAdapter(
     private val retry: () -> Unit
-): LoadStateAdapter<FooterLoadStateAdapter.FooterLoadStateViewHolder>() {
+) : LoadStateAdapter<FooterLoadStateAdapter.FooterLoadStateViewHolder>() {
     override fun onBindViewHolder(holder: FooterLoadStateViewHolder, loadState: LoadState) {
         holder.bind(loadState)
     }
@@ -20,7 +21,8 @@ class FooterLoadStateAdapter(
         parent: ViewGroup,
         loadState: LoadState
     ): FooterLoadStateViewHolder {
-        val binding = ItemFooterLoadStateBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemFooterLoadStateBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FooterLoadStateViewHolder(binding, retry)
     }
 
@@ -45,7 +47,11 @@ class FooterLoadStateAdapter(
                 is LoadState.Error -> {
                     binding.pbLoading.isVisible = false
                     binding.btnRetry.isVisible = true
-                    Toast.makeText(itemView.context, loadState.error.message.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        itemView.context,
+                        itemView.resources.getString(R.string.check_your_connection),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

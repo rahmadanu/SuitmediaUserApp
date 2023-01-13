@@ -8,7 +8,8 @@ interface UserRemoteDataSource {
     suspend fun getListUsers(page: Int): ListUsersResponse
 }
 
-class UserRemoteDataSourceImpl @Inject constructor(private val apiService: UserApiService) : UserRemoteDataSource {
+class UserRemoteDataSourceImpl @Inject constructor(private val apiService: UserApiService) :
+    UserRemoteDataSource {
     override suspend fun getListUsers(page: Int): ListUsersResponse {
         return apiService.getListUsers(page = page)
     }

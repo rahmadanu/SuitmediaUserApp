@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class ListUsersPagingSource @Inject constructor(
     private val dataSource: UserRemoteDataSource
-): PagingSource<Int, User>() {
+) : PagingSource<Int, User>() {
     override fun getRefreshKey(state: PagingState<Int, User>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)

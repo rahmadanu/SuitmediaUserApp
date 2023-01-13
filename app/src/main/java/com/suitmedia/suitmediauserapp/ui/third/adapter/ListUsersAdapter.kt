@@ -12,12 +12,13 @@ import com.suitmedia.suitmediauserapp.databinding.ItemUserBinding
 
 class ListUsersAdapter(
     private val onClick: (String) -> Unit
-): PagingDataAdapter<User, ListUsersAdapter.ListUsersViewHolder>(DiffCallback) {
+) : PagingDataAdapter<User, ListUsersAdapter.ListUsersViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
             return oldItem.id == newItem.id
         }
+
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
             return oldItem == newItem
         }
@@ -26,24 +27,25 @@ class ListUsersAdapter(
 
     class ListUsersViewHolder(private val binding: ItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(user: User, onClick: (String) -> Unit) {
-                with(binding) {
-                    with(user) {
-                        val fulLName = itemView.resources.getString(R.string.full_name, firstName, lastName)
-                        tvFullName.text = fulLName
-                        tvEmail.text = email
-                        Glide.with(itemView.context)
-                            .load(avatar)
-                            .placeholder(R.drawable.ic_photo)
-                            .circleCrop()
-                            .into(ivAvatar)
+        fun bind(user: User, onClick: (String) -> Unit) {
+            with(binding) {
+                with(user) {
+                    val fulLName =
+                        itemView.resources.getString(R.string.full_name, firstName, lastName)
+                    tvFullName.text = fulLName
+                    tvEmail.text = email
+                    Glide.with(itemView.context)
+                        .load(avatar)
+                        .placeholder(R.drawable.ic_photo)
+                        .circleCrop()
+                        .into(ivAvatar)
 
-                        itemView.setOnClickListener {
-                            onClick(fulLName)
-                        }
+                    itemView.setOnClickListener {
+                        onClick(fulLName)
                     }
                 }
             }
+        }
     }
 
     override fun onBindViewHolder(holder: ListUsersViewHolder, position: Int) {

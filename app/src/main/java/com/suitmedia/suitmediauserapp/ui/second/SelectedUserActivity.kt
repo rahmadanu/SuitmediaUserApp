@@ -14,8 +14,7 @@ class SelectedUserActivity : AppCompatActivity() {
     private val binding get() = _binding!!
 
     private val selectedUserResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            result ->
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result?.data?.getStringExtra(EXTRA_NAME)?.let {
                     binding.tvSelectedUserName.text = it
@@ -35,7 +34,12 @@ class SelectedUserActivity : AppCompatActivity() {
     private fun setOnClickListener() {
         binding.apply {
             btnChooseAUser.setOnClickListener {
-                selectedUserResult.launch(Intent(this@SelectedUserActivity, ChooseUserActivity::class.java))
+                selectedUserResult.launch(
+                    Intent(
+                        this@SelectedUserActivity,
+                        ChooseUserActivity::class.java
+                    )
+                )
             }
             ivBack.setOnClickListener {
                 finish()

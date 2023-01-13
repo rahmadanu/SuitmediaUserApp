@@ -13,4 +13,7 @@
     <string name="try_again">Try Again</string>
     <string name="second_screen">Second Screen</string>
     <string name="third_screen">Third Screen</string>
+    <string name="check_your_connection">Check your internet connection and try again</string>
+    <string name="back_content_description">Back to previous screen</string>
+    <string name="image_placeholder_content_description">Image placeholder</string>
 </resources>

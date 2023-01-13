@@ -38,6 +38,7 @@ class ChooseUserActivity : AppCompatActivity() {
 
     private val refreshListener = SwipeRefreshLayout.OnRefreshListener {
         binding.swipeRefreshLayout.isRefreshing = true
+        initList()
         observeListUsers()
     }
 
@@ -83,6 +84,7 @@ class ChooseUserActivity : AppCompatActivity() {
             }
             adapter.submitData(lifecycle, it)
             binding.swipeRefreshLayout.isRefreshing = false
+            binding.tvEmpty.isVisible = false
         }
     }
 

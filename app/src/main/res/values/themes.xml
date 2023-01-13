@@ -17,8 +17,19 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
-    <style name="Theme.SuitMediaApp.Button" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/light_navy_blue</item>
+    <style name="Theme.SuitMediaApp.Button" parent="">
         <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:height">50dp</item>
+    </style>
+
+    <style name="Theme.SuitMediaApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
     </style>
 </resources>
