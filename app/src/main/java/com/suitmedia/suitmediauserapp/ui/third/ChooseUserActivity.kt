@@ -11,6 +11,7 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.filter
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.suitmedia.suitmediauserapp.data.remote.model.user.User
 import com.suitmedia.suitmediauserapp.databinding.ActivityChooseUserBinding
 import com.suitmedia.suitmediauserapp.ui.second.SelectedUserActivity
@@ -38,6 +39,11 @@ class ChooseUserActivity : AppCompatActivity() {
         }
     }
 
+    private val refreshListener = SwipeRefreshLayout.OnRefreshListener {
+        binding.swipeRefreshLayout.isRefreshing = true
+        observeListUsers()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityChooseUserBinding.inflate(layoutInflater)
@@ -49,8 +55,9 @@ class ChooseUserActivity : AppCompatActivity() {
     }
 
     private fun setOnClickListener() {
-        binding.ivBack.setOnClickListener {
-            finish()
+        binding.apply {
+            ivBack.setOnClickListener { finish() }
+            swipeRefreshLayout.setOnRefreshListener(refreshListener)
         }
     }
 
@@ -78,6 +85,7 @@ class ChooseUserActivity : AppCompatActivity() {
                 }
             }
             adapter.submitData(lifecycle, it)
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 
