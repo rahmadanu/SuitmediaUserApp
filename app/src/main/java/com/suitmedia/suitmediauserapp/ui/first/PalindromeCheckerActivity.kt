@@ -27,7 +27,7 @@ class PalindromeCheckerActivity : AppCompatActivity() {
         binding.apply {
 
             btnCheck.setOnClickListener {
-                val palindromeField = binding.etPalindrome.text.toString()
+                val palindromeField = binding.etPalindrome.text.toString().filter { it.isWhitespace().not() }
                 if (validateInput(binding.etPalindrome)) {
                     isPalindrome(palindromeField)
                 }
@@ -45,12 +45,12 @@ class PalindromeCheckerActivity : AppCompatActivity() {
 
     private fun isPalindrome(palindromeField: String) {
         val palindromeFieldReversed = palindromeField.reversed()
-        Log.d("test", "$palindromeField $palindromeFieldReversed")
         if (palindromeField.equals(palindromeFieldReversed, ignoreCase = true)) {
             showDialog("isPalindrome")
         } else {
             showDialog("not palindrome")
         }
+        Log.d("test", "$palindromeField $palindromeFieldReversed")
     }
 
     private fun showDialog(message: String) {
