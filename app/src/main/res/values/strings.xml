@@ -11,4 +11,6 @@
     <string name="choose_a_user">Choose a User</string>
     <string name="full_name">%1$s %2$s</string>
     <string name="try_again">Try Again</string>
+    <string name="second_screen">Second Screen</string>
+    <string name="third_screen">Third Screen</string>
 </resources>

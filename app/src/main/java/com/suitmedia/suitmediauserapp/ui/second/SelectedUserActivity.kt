@@ -38,6 +38,9 @@ class SelectedUserActivity : AppCompatActivity() {
             btnChooseAUser.setOnClickListener {
                 selectedUserResult.launch(Intent(this@SelectedUserActivity, ChooseUserActivity::class.java))
             }
+            ivBack.setOnClickListener {
+                finish()
+            }
         }
     }
 

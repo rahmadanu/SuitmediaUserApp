@@ -45,6 +45,13 @@ class ChooseUserActivity : AppCompatActivity() {
 
         initList()
         observeListUsers()
+        setOnClickListener()
+    }
+
+    private fun setOnClickListener() {
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun initList() {
