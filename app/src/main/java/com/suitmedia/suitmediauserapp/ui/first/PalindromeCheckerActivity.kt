@@ -1,10 +1,10 @@
 package com.suitmedia.suitmediauserapp.ui.first
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.suitmedia.suitmediauserapp.R
 import com.suitmedia.suitmediauserapp.databinding.ActivityPalindromeCheckerBinding

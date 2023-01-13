@@ -2,10 +2,9 @@ package com.suitmedia.suitmediauserapp.ui.second
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
-import com.suitmedia.suitmediauserapp.R
+import androidx.appcompat.app.AppCompatActivity
 import com.suitmedia.suitmediauserapp.databinding.ActivitySelectedUserBinding
 import com.suitmedia.suitmediauserapp.ui.third.ChooseUserActivity
 

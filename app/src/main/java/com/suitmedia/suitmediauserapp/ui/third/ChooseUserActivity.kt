@@ -2,17 +2,14 @@ package com.suitmedia.suitmediauserapp.ui.third
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.paging.PagingData
-import androidx.paging.filter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.suitmedia.suitmediauserapp.data.remote.model.user.User
 import com.suitmedia.suitmediauserapp.databinding.ActivityChooseUserBinding
 import com.suitmedia.suitmediauserapp.ui.second.SelectedUserActivity
 import com.suitmedia.suitmediauserapp.ui.third.adapter.FooterLoadStateAdapter
