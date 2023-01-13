@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    tools:context=".ui.first.PalindromeCheckerActivity">
+
+    <ImageView
+        android:id="@+id/iv_placeholder"
+        android:layout_width="116dp"
+        android:layout_height="116dp"
+        android:layout_marginBottom="60dp"
+        android:src="@drawable/ic_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/til_name" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:hint="@string/hint_name"
+        app:boxBackgroundColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_palindrome"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/hint_palindrome"
+        app:boxBackgroundColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_name">
+
+        <EditText
+            android:id="@+id/et_palindrome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_check"
+        style="@style/Theme.SuitMediaApp.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="@string/check"
+        app:layout_constraintStart_toStartOf="@id/til_palindrome"
+        app:layout_constraintEnd_toEndOf="@id/til_palindrome"
+        app:layout_constraintTop_toBottomOf="@id/til_palindrome"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        style="@style/Theme.SuitMediaApp.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/next"
+        app:layout_constraintStart_toStartOf="@id/til_palindrome"
+        app:layout_constraintEnd_toEndOf="@id/til_palindrome"
+        app:layout_constraintTop_toBottomOf="@id/btn_check"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
