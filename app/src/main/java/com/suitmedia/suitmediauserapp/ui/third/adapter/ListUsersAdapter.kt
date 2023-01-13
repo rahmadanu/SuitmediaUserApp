@@ -35,6 +35,7 @@ class ListUsersAdapter(
                         Glide.with(itemView.context)
                             .load(avatar)
                             .placeholder(R.drawable.ic_photo)
+                            .circleCrop()
                             .into(ivAvatar)
 
                         itemView.setOnClickListener {

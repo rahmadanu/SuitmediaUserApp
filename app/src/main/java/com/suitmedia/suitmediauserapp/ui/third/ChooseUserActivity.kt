@@ -3,10 +3,20 @@ package com.suitmedia.suitmediauserapp.ui.third
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
+import androidx.paging.PagingData
+import androidx.paging.filter
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.suitmedia.suitmediauserapp.data.remote.model.user.User
 import com.suitmedia.suitmediauserapp.databinding.ActivityChooseUserBinding
+import com.suitmedia.suitmediauserapp.ui.third.adapter.FooterLoadStateAdapter
 import com.suitmedia.suitmediauserapp.ui.third.adapter.ListUsersAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ChooseUserActivity : AppCompatActivity() {
@@ -28,25 +38,34 @@ class ChooseUserActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initList()
-        getListUsers()
         observeListUsers()
     }
 
     private fun initList() {
         binding.rvListUsers.apply {
             layoutManager = LinearLayoutManager(this@ChooseUserActivity)
-            adapter = this@ChooseUserActivity.adapter
+            adapter = this@ChooseUserActivity.adapter.withLoadStateFooter(
+                footer = FooterLoadStateAdapter { this@ChooseUserActivity.adapter.retry() }
+            )
         }
     }
 
     private fun observeListUsers() {
         viewModel.listUsers.observe(this) {
+            lifecycleScope.launch(Dispatchers.Main) {
+                adapter.loadStateFlow.collectLatest { loadStates ->
+                    if (loadStates.refresh is LoadState.Loading) {
+                        binding.pbLoading.isVisible = true
+                    } else {
+                        binding.pbLoading.isVisible = false
+                        if (loadStates.refresh is LoadState.Error) {
+                            binding.tvEmpty.isVisible = adapter.itemCount < 1
+                        }
+                    }
+                }
+            }
             adapter.submitData(lifecycle, it)
         }
-    }
-
-    private fun getListUsers() {
-        viewModel.getListUsers()
     }
 
     override fun onDestroy() {
