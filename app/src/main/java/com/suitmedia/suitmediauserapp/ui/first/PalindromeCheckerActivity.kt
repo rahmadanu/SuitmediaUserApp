@@ -51,9 +51,9 @@ class PalindromeCheckerActivity : AppCompatActivity() {
     private fun isPalindrome(palindromeField: String) {
         val palindromeFieldReversed = palindromeField.reversed()
         if (palindromeField.equals(palindromeFieldReversed, ignoreCase = true)) {
-            showDialog("isPalindrome")
+            showDialog(getString(R.string.palindrome_true))
         } else {
-            showDialog("not palindrome")
+            showDialog(getString(R.string.palindrome_false))
         }
         Log.d("test", "$palindromeField $palindromeFieldReversed")
     }
@@ -72,7 +72,7 @@ class PalindromeCheckerActivity : AppCompatActivity() {
 
         if (input.text.isEmpty()) {
             isValid = false
-            input.error = "Field must not be empty"
+            input.error = getString(R.string.field_must_not_be_empty)
         }
         return isValid
     }

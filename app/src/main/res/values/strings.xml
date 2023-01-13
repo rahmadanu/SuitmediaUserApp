@@ -16,4 +16,7 @@
     <string name="check_your_connection">Check your internet connection and try again</string>
     <string name="back_content_description">Back to previous screen</string>
     <string name="image_placeholder_content_description">Image placeholder</string>
+    <string name="field_must_not_be_empty">Field must not be empty</string>
+    <string name="palindrome_true">isPalindrome</string>
+    <string name="palindrome_false">not palindrome</string>
 </resources>
