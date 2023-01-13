@@ -1,8 +1,10 @@
 package com.suitmedia.suitmediauserapp.ui.second
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import com.suitmedia.suitmediauserapp.R
 import com.suitmedia.suitmediauserapp.databinding.ActivitySelectedUserBinding
 import com.suitmedia.suitmediauserapp.ui.third.ChooseUserActivity
@@ -11,6 +13,16 @@ class SelectedUserActivity : AppCompatActivity() {
 
     private var _binding: ActivitySelectedUserBinding? = null
     private val binding get() = _binding!!
+
+    private val selectedUserResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result?.data?.getStringExtra(EXTRA_NAME)?.let {
+                    binding.tvSelectedUserName.text = it
+                }
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +36,7 @@ class SelectedUserActivity : AppCompatActivity() {
     private fun setOnClickListener() {
         binding.apply {
             btnChooseAUser.setOnClickListener {
-                startActivity(Intent(this@SelectedUserActivity, ChooseUserActivity::class.java))
+                selectedUserResult.launch(Intent(this@SelectedUserActivity, ChooseUserActivity::class.java))
             }
         }
     }

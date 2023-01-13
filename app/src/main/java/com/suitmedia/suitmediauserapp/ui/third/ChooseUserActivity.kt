@@ -1,5 +1,7 @@
 package com.suitmedia.suitmediauserapp.ui.third
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -11,6 +13,7 @@ import androidx.paging.filter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.suitmedia.suitmediauserapp.data.remote.model.user.User
 import com.suitmedia.suitmediauserapp.databinding.ActivityChooseUserBinding
+import com.suitmedia.suitmediauserapp.ui.second.SelectedUserActivity
 import com.suitmedia.suitmediauserapp.ui.third.adapter.FooterLoadStateAdapter
 import com.suitmedia.suitmediauserapp.ui.third.adapter.ListUsersAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +31,10 @@ class ChooseUserActivity : AppCompatActivity() {
 
     private val adapter: ListUsersAdapter by lazy {
         ListUsersAdapter {
-
+            val intent = Intent()
+            intent.putExtra(SelectedUserActivity.EXTRA_NAME, it)
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 
