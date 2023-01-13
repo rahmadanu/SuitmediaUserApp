@@ -4,4 +4,5 @@
     <string name="hint_palindrome">Palindrome</string>
     <string name="check">CHECK</string>
     <string name="next">NEXT</string>
+    <string name="OK">OK</string>
 </resources>
