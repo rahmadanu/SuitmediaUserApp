@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
-    android:background="@android:color/darker_gray"
+    android:background="@drawable/background_first"
     tools:context=".ui.first.PalindromeCheckerActivity">
 
     <ImageView
@@ -25,6 +25,10 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_name"
         app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -44,6 +48,10 @@
         android:layout_marginTop="20dp"
         android:hint="@string/hint_palindrome"
         app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_name">
@@ -56,7 +64,6 @@
 
     <Button
         android:id="@+id/btn_check"
-        style="@style/Theme.SuitMediaApp.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -67,7 +74,6 @@
 
     <Button
         android:id="@+id/btn_next"
-        style="@style/Theme.SuitMediaApp.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
