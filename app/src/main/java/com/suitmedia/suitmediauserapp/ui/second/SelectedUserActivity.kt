@@ -1,9 +1,11 @@
 package com.suitmedia.suitmediauserapp.ui.second
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.suitmedia.suitmediauserapp.R
 import com.suitmedia.suitmediauserapp.databinding.ActivitySelectedUserBinding
+import com.suitmedia.suitmediauserapp.ui.third.ChooseUserActivity
 
 class SelectedUserActivity : AppCompatActivity() {
 
@@ -16,6 +18,15 @@ class SelectedUserActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initView()
+        setOnClickListener()
+    }
+
+    private fun setOnClickListener() {
+        binding.apply {
+            btnChooseAUser.setOnClickListener {
+                startActivity(Intent(this@SelectedUserActivity, ChooseUserActivity::class.java))
+            }
+        }
     }
 
     private fun initView() {

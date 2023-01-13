@@ -8,13 +8,14 @@ import androidx.paging.liveData
 import com.suitmedia.suitmediauserapp.data.remote.model.user.User
 import com.suitmedia.suitmediauserapp.data.remote.paging.ListUsersPagingSource
 import com.suitmedia.suitmediauserapp.util.Constants.DEFAULT_PAGE
+import javax.inject.Inject
 
 interface UserRepository {
-    suspend fun getUserLists(): LiveData<PagingData<User>>
+    fun getUserLists(): LiveData<PagingData<User>>
 }
 
-class UserRepositoryImpl(private val listUsersPagingSource: ListUsersPagingSource): UserRepository {
-    override suspend fun getUserLists(): LiveData<PagingData<User>> {
+class UserRepositoryImpl @Inject constructor(private val listUsersPagingSource: ListUsersPagingSource): UserRepository {
+    override fun getUserLists(): LiveData<PagingData<User>> {
         return Pager(
             config = PagingConfig(
                 pageSize = DEFAULT_PAGE,
