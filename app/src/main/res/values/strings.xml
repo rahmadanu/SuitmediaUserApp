@@ -5,7 +5,8 @@
     <string name="check">CHECK</string>
     <string name="next">NEXT</string>
     <string name="OK">OK</string>
-    <string name="welcome_name">Welcome\n%s</string>
+    <string name="welcome">Welcome</string>
+    <string name="name_placeholder">Rahma Danu Sadewa</string>
     <string name="selected_user_name">Selected User Name</string>
     <string name="choose_a_user">Choose a User</string>
 </resources>

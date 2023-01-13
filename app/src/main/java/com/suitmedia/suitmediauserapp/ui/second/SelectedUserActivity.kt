@@ -14,10 +14,22 @@ class SelectedUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivitySelectedUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        initView()
+    }
+
+    private fun initView() {
+        binding.apply {
+            tvName.text = intent.getStringExtra(EXTRA_NAME)
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        const val EXTRA_NAME = "name"
     }
 }

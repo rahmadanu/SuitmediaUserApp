@@ -1,11 +1,14 @@
 package com.suitmedia.suitmediauserapp.ui.first
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.suitmedia.suitmediauserapp.R
 import com.suitmedia.suitmediauserapp.databinding.ActivityPalindromeCheckerBinding
+import com.suitmedia.suitmediauserapp.ui.second.SelectedUserActivity
 
 class PalindromeCheckerActivity : AppCompatActivity() {
 
@@ -25,12 +28,16 @@ class PalindromeCheckerActivity : AppCompatActivity() {
 
             btnCheck.setOnClickListener {
                 val palindromeField = binding.etPalindrome.text.toString()
-                isPalindrome(palindromeField)
+                if (validateInput(binding.etPalindrome)) {
+                    isPalindrome(palindromeField)
+                }
             }
             btnNext.setOnClickListener {
-                //
-                if (validateInput()) {
-
+                val name = binding.etName.text.toString()
+                if (validateInput(binding.etName)) {
+                    startActivity(Intent(this@PalindromeCheckerActivity, SelectedUserActivity::class.java).apply {
+                        putExtra(SelectedUserActivity.EXTRA_NAME, name)
+                    })
                 }
             }
         }
@@ -55,18 +62,12 @@ class PalindromeCheckerActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun validateInput(): Boolean {
+    private fun validateInput(input: EditText): Boolean {
         var isValid = true
-        val name = binding.etName.text.toString()
-        val palindrome = binding.etPalindrome.text.toString()
 
-        if (name.isEmpty()) {
+        if (input.text.isEmpty()) {
             isValid = false
-            binding.etName.error = "Name must not be empty"
-        }
-        if (palindrome.isEmpty()) {
-            isValid = false
-            binding.etName.error = "Palindrome must not be empty"
+            input.error = "Field must not be empty"
         }
         return isValid
     }

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.SuitmediaUserApp"
         tools:targetApi="31">
         <activity
-            android:name=".SelectedUserActivity"
+            android:name=".ui.second.SelectedUserActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
